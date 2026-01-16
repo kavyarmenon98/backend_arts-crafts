@@ -3,8 +3,8 @@ import { getAdminOrders, updateOrderStatus } from "../Controllers/adminControlle
 
 const adminRoutes = express.Router();
 
-adminRoutes.get("/fetchadmin", getAdminOrders);
-adminRoutes.put("/update-status/:id", updateOrderStatus);
+adminRoutes.get("/fetchadmin", protect, authorize("admin"), getAdminOrders);
+adminRoutes.put("/update-status/:id", protect, authorize("admin"), updateOrderStatus);
 
 export default adminRoutes;
  
