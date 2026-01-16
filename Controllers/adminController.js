@@ -3,7 +3,7 @@ import Order from "../models/orderModel.js";
 export const getAdminOrders = async (req, res) => {
   try {
     const orders = await Order.find()
-      .populate("userId", "name email address")
+      .populate("userId", "name email address phonenumber")
       .sort({ createdAt: -1 });
 
     return res.status(200).json({
