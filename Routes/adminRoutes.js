@@ -1,5 +1,6 @@
 import express from "express";
 import { getAdminOrders, updateOrderStatus } from "../Controllers/adminController.js";
+import { protect } from "../Middleware/isAuth.js";
 
 const adminRoutes = express.Router();
 
