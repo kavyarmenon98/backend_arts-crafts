@@ -1,5 +1,5 @@
 import express from "express";
-import { addReview, getProductReviews, getUserReviews } from "../Controllers/reviewController.js";
+import { addReview, getAllReviews, getProductReviews, getUserReviews } from "../Controllers/reviewController.js";
 import { protect } from "../Middleware/isAuth.js";
 
 
@@ -8,6 +8,6 @@ const reviewRouter = express.Router();
 reviewRouter.post("/add", protect, addReview);
 reviewRouter.get("/productreview/:productId", getProductReviews);
 reviewRouter.get("/myreviews", protect, getUserReviews);
-reviewRouter.get("/allreviews", protect, getA); // Assuming only protected users can access all reviews
+reviewRouter.get("/allreviews", protect, getAllReviews); // Assuming only protected users can access all reviews
 
 export default reviewRouter;
