@@ -79,7 +79,7 @@ export const getUserReviews = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    const reviews = await Review.find({ userId });
+    const reviews = await Review.find({ userId }).populate("productId", "pname image").populate("userId", "name email");
 
     return res.status(200).json({
       success: true,
@@ -93,3 +93,19 @@ export const getUserReviews = async (req, res) => {
     });
   }
 };
+export const getAllReviews = async (req, res) => {
+  try {
+    const reviews = await Review.find().populate("userId", "name email").populate("productId", "pname image")
+     return res.status(200).json({
+      success: true,
+      reviews,
+    });
+  } catch (err) {
+ 
+    return res.status(500).json({
+      success: false,
+      message: "Internal server error",
+    });
+  }
+   
+}
