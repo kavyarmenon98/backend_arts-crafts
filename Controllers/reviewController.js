@@ -101,10 +101,11 @@ export const getAllReviews = async (req, res) => {
       reviews,
     });
   } catch (err) {
+ console.log(err);
  
     return res.status(500).json({
       success: false,
-      message: "Internal server error",
+      message:err.message,
     });
   }
    
